@@ -1,5 +1,8 @@
 # DRL_stock_trading
-Deep Reinforcement Learning for Stock trading task. The neural network model was written in Pytorch. 
+Deep Reinforcement Learning for Stock trading task. 
+
+## Implementation of the Code 
+The model was written with Pyhton. The neural network part was written with Pytorch. You can accelerate the training by using GPU (Cuda) if applicable. You can download or clone all the .py files and run the 'mainloop.py' to produce the result. Also, you can change the hyperparameters in that file. As the stock trading data are downloaded directly with the 'Yahoo finance' API in the coding, you can change the 'ticker' name and the train-test period as well. 
 
 ## Abstract:
 This project presented a new combination of Deep Reinforcement Learning algorithms. Prioritized Experience Replay which was proven to be robust in Atari Game revealed strong evidence to improve performance in the timeseries prediction task. In order to imitate the human-like learning instinct, Attention network was combined with encoding-decoding mechanism with the neural network to generate Q-values for the trading actions in this advanced DQN algorithm. The new model was compared with traditional EMA strategies and RNN models with Evaluation Metrics including Sharpe Ratio, Win Ratio, Maximum Drawdown/Return and Annualized Return. Inspiring result was obtained when daily data was used. 
