@@ -1,5 +1,5 @@
 # DRL_stock_trading
-Deep Reinforcement Learning for Stock trading task
+Deep Reinforcement Learning for Stock trading task. The neural network model was written in Pytorch. 
 
 ## Abstract:
 This project presented a new combination of Deep Reinforcement Learning algorithms. Prioritized Experience Replay which was proven to be robust in Atari Game revealed strong evidence to improve performance in the timeseries prediction task. In order to imitate the human-like learning instinct, Attention network was combined with encoding-decoding mechanism with the neural network to generate Q-values for the trading actions in this advanced DQN algorithm. The new model was compared with traditional EMA strategies and RNN models with Evaluation Metrics including Sharpe Ratio, Win Ratio, Maximum Drawdown/Return and Annualized Return. Inspiring result was obtained when daily data was used. 
