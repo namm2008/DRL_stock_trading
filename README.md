@@ -6,6 +6,6 @@ This project presented a new combination of Deep Reinforcement Learning algorith
 
 ## Deep Q-Learning 
 ### State and Action
-The state design was one of the hardest tasks throughout the research. To concentrate on the research aims, the agent was set to only trade long and forbidden the short selling for simplicity reason. Also, the agent was only allowed to hold only one stock. In the replay memory, an additional column was added to show the holding stock status. A similar setting to Gao’s [4] of state and valid action pair was used.
-Actions space: {█(0=Cash out or keep holding cash@1=Buy a stock                                      @2=keep holding a stock                    )┤  
+The state design was one of the hardest tasks throughout the research. To concentrate on the research aims, the agent was set to only trade long and forbidden the short selling for simplicity reason. Also, the agent was only allowed to hold only one stock. In the replay memory, an additional column was added to show the holding stock status. A similar setting to Gao’s [4] of state and valid action pair was used. \
+**Actions space: { ( 0 = Cash out or keep holding cash ), ( 1 = Buy a stock ) , ( 2 = keep holding a stock ) }**\
 If the network output an invalid action, for example, when the agent was holding a stock, it was not supposed to buy another stock at the time. However, the network outputted 1 which violated the rule. In this case, the second highest value output would be chosen as the action. 
