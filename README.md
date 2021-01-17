@@ -39,5 +39,39 @@ Secondly, the output was passed to a linear layer (known as the Attention layer)
 Finally, the decoder was a single-layer GRU network. It was similar to the above stacked GRU network but without stacking mechanism. The hidden dimension of used was 13. The output of the GRU network was first applied Dropout with ratio 0.5. A hidden layer with 8 neurons and ReLu activation was added. At the end, the network output size was 3 and also Softmax function was applied. 
 
 ### Loss function and Optimization
-In the optimization stage, the loss had to be computed. In each optimization, a batch of sample was drawn from the replay memory according to the probability weighting set in the priority experience replay. The drawn sample was then concatenated to form a batch. There were 4 types of batches, including the current state, action, reward, and next state batches. Firstly, the state batch was passed to the policy network to output the predicted values. After that, the next state batch was past to the target network. The output values were multiplied by the Gamma (γ) value and added to the reward batch. This was treated as the target values. The loss was then calculated by squaring the difference between the predicted values and the target values. To be noted that, in order to adjust the influence by the prioritized experience replay, the weight value (or known as importance weights) from the updating procedure of the replay list updates had to be multiplied to the loss function. The loss function was undergone backpropagation to update the network parameters. The use of Adam optimizer helped improve the efficiency of stochastic gradient descent [19]. For avoiding explosion of gradient which can affect the training, the gradient was clipped between -1 and 1. 
+In the optimization stage, the loss had to be computed. In each optimization, a batch of sample was drawn from the replay memory according to the probability weighting set in the priority experience replay. The drawn sample was then concatenated to form a batch. There were 4 types of batches, including the current state, action, reward, and next state batches. Firstly, the state batch was passed to the policy network to output the predicted values. After that, the next state batch was past to the target network. The output values were multiplied by the Gamma (γ) value and added to the reward batch. This was treated as the target values. The loss was then calculated by squaring the difference between the predicted values and the target values. To be noted that, in order to adjust the influence by the prioritized experience replay, the weight value (or known as importance weights) from the updating procedure of the replay list updates had to be multiplied to the loss function. The loss function was undergone backpropagation to update the network parameters. The use of Adam optimizer helped improve the efficiency of stochastic gradient descent. For avoiding explosion of gradient which can affect the training, the gradient was clipped between -1 and 1. 
 
+## Example:
+Use Amazon stock as an example. Put in the start date and end date with ticker 'AMZN' in the mainloop.py file. You can also adjust the hyperparameters in the model.
+'''
+start = '2006-01-01'
+end = '2018-08-30'
+ticker = 'AMZN'
+model_list = ['RL_GRU_Attention']     #can also use LSTM Attention model with 'RL_LSTM_Attention'
+PER_list = ['PER']                    #Prioritized Experience Replay, or use 'noPER'  
+data_feature_list = ['increasing']    #Choose which stock you would want to test
+data_time_data_list = ['noDT']        #with or without date time features
+'''
+#### Test Statistics:
+1. Model: RL_GRU_Attention_PER_increasing_noDT
+2. Total Rewards	2839.583
+3. Training Episode: 9
+4. Num Parameter: 20786
+5. Num Trading Day: 308
+6. Num Year: 1.2
+7. Num Trade: 26
+8. Trade per Year: 21.666667
+9. Win Ratio: 69.2254442%
+10. Max Drawdown: -2.525205605%
+11. Max Return: 103.7726721%
+12. Sharpe Ratio: 3.892681198
+13. Underlying Total Return: 107.0763109%
+14. Underlying Annual Return: 83.4180264%
+15. Model Total Return: 103.7726721%
+16. Model Annual Return: 80.9762634
+
+#### Graphical output
+![](https://github.com/namm2008/DRL_stock_trading/blob/main/backtest_output/RL_GRU_Attention_PER_increasing_noDT_rewards_price.png?raw=true)
+![](https://github.com/namm2008/DRL_stock_trading/blob/main/backtest_output/RL_GRU_Attention_PER_increasing_noDT_testing_action_price.png?raw=true)
+![](https://github.com/namm2008/DRL_stock_trading/blob/main/backtest_output/RL_GRU_Attention_PER_increasing_noDT_testing_qvalue_price.png?raw=true)
+![](https://github.com/namm2008/DRL_stock_trading/blob/main/backtest_output/RL_GRU_Attention_PER_increasing_noDT_backtesting_perform.png?raw=true)
