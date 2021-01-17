@@ -43,7 +43,7 @@ In the optimization stage, the loss had to be computed. In each optimization, a 
 
 ## Example:
 Use Amazon stock as an example. Put in the start date and end date with ticker 'AMZN' in the mainloop.py file. You can also adjust the hyperparameters in the model.
-'''
+```
 start = '2006-01-01'
 end = '2018-08-30'
 ticker = 'AMZN'
@@ -51,7 +51,7 @@ model_list = ['RL_GRU_Attention']     #can also use LSTM Attention model with 'R
 PER_list = ['PER']                    #Prioritized Experience Replay, or use 'noPER'  
 data_feature_list = ['increasing']    #Choose which stock you would want to test
 data_time_data_list = ['noDT']        #with or without date time features
-'''
+```
 #### Test Statistics:
 1. Model: RL_GRU_Attention_PER_increasing_noDT
 2. Total Rewards	2839.583
